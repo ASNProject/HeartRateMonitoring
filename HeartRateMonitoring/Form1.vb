@@ -6,9 +6,12 @@ Public Class Form1
     Private ReadOnly updateInterval As Integer = 1000
     Private currentNik As String = ""
     Private currentName As String = ""
+    Private currentAddress As String = ""
     Private serialPort As SerialPort
     Private bpm As Integer
     Private isConnected As Boolean = False
+    Private latestCode As Integer
+    Private newCode As Integer
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles nikText.Click
 
@@ -31,13 +34,14 @@ Public Class Form1
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles TimerSerial.Tick
         If isConnected AndAlso Not String.IsNullOrEmpty(currentNik) AndAlso Not String.IsNullOrEmpty(currentName) AndAlso bpm > 0 Then
             LoadChart(currentNik)
-            InsertDataToDatabase(currentNik, currentName, bpm)
+            InsertDataToDatabase(currentNik, currentName, bpm, currentAddress, newCode)
         End If
     End Sub
 
     Private Sub disconnectButton_Click(sender As Object, e As EventArgs) Handles disconnectButton.Click
         DisconnectFromArduino()
         isConnected = False
+        Label5.Text = 0
     End Sub
 
     Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
@@ -106,16 +110,15 @@ Public Class Form1
     Private Sub startButton_Click(sender As Object, e As EventArgs) Handles startButton.Click
         currentNik = nikInput.Text
         currentName = nameInput.Text
+        currentAddress = addressInput.Text
+        latestCode = GetLatestCode(currentNik)
+        newCode = latestCode + 1
 
-        If Not String.IsNullOrEmpty(currentNik) Then
-            If Not String.IsNullOrEmpty(currentName) Then
-                LoadChart(currentNik)
-            Else
-                MessageBox.Show("Mohon masukkan nik dan nama terlebih dahulu")
-            End If
-
+        If Not String.IsNullOrEmpty(currentNik) AndAlso Not String.IsNullOrEmpty(currentName) AndAlso Not String.IsNullOrEmpty(currentAddress) Then
+            LoadChart(currentNik)
+            isConnected = True
         Else
-            MessageBox.Show("Mohon masukkan nik dan nama terlebih dahulu")
+            MessageBox.Show("Mohon masukkan nik, nama, dan alamat terlebih dahulu")
         End If
     End Sub
 
@@ -199,9 +202,9 @@ Public Class Form1
         UpdateConnectButtonState()
     End Sub
 
-    Private Sub InsertDataToDatabase(nik As String, nama As String, bpm As Integer)
+    Private Sub InsertDataToDatabase(nik As String, nama As String, bpm As Integer, alamat As String, code As Integer)
         Dim connectionString As String = "Server=127.0.0.1;Database=bpm_db;Uid=root;Pwd=;"
-        Dim query As String = "INSERT INTO bpm_data (nik, nama, bpm) VALUES (@nik, @nama, @bpm)"
+        Dim query As String = "INSERT INTO bpm_data (nik, nama, bpm, alamat, code) VALUES (@nik, @nama, @bpm, @alamat, @code)"
 
         Using connection As New MySqlConnection(connectionString)
             Try
@@ -210,6 +213,8 @@ Public Class Form1
                 cmd.Parameters.AddWithValue("@nik", nik)
                 cmd.Parameters.AddWithValue("@nama", nama)
                 cmd.Parameters.AddWithValue("@bpm", bpm)
+                cmd.Parameters.AddWithValue("@alamat", alamat)
+                cmd.Parameters.AddWithValue("@code", code)
 
                 cmd.ExecuteNonQuery()
             Catch ex As Exception
@@ -218,5 +223,40 @@ Public Class Form1
                 connection.Close()
             End Try
         End Using
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        isConnected = False
+        Label5.Text = 0
+    End Sub
+
+    Private Function GetLatestCode(nik As String) As Integer
+        Dim connectionString As String = "Server=127.0.0.1;Database=bpm_db;Uid=root;Pwd=;"
+        Dim query As String = "SELECT MAX(code) FROM bpm_data WHERE nik = @nik"
+        Dim latestCode As Integer = 0
+
+        Using connection As New MySqlConnection(connectionString)
+            Try
+                connection.Open()
+                Dim cmd As New MySqlCommand(query, connection)
+                cmd.Parameters.AddWithValue("@nik", nik)
+
+                Dim result As Object = cmd.ExecuteScalar()
+                If result IsNot DBNull.Value Then
+                    latestCode = Convert.ToInt32(result)
+                End If
+            Catch ex As Exception
+                MessageBox.Show("Error: " & ex.Message)
+            Finally
+                connection.Close()
+            End Try
+        End Using
+
+        Return latestCode
+    End Function
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim newForm As New Form2()
+        newForm.Show()
     End Sub
 End Class

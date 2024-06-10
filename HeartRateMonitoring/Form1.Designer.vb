@@ -23,9 +23,9 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.titleLabel = New System.Windows.Forms.Label()
         Me.nameTitleText = New System.Windows.Forms.Label()
         Me.nikInput = New System.Windows.Forms.TextBox()
@@ -46,6 +46,10 @@ Partial Class Form1
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.addressInput = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -66,7 +70,7 @@ Partial Class Form1
         '
         Me.nameTitleText.AutoSize = True
         Me.nameTitleText.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.nameTitleText.Location = New System.Drawing.Point(35, 100)
+        Me.nameTitleText.Location = New System.Drawing.Point(34, 92)
         Me.nameTitleText.Name = "nameTitleText"
         Me.nameTitleText.Size = New System.Drawing.Size(128, 21)
         Me.nameTitleText.TabIndex = 1
@@ -76,7 +80,7 @@ Partial Class Form1
         '
         Me.nikInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.nikInput.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.nikInput.Location = New System.Drawing.Point(38, 150)
+        Me.nikInput.Location = New System.Drawing.Point(38, 135)
         Me.nikInput.Name = "nikInput"
         Me.nikInput.Size = New System.Drawing.Size(253, 22)
         Me.nikInput.TabIndex = 2
@@ -85,7 +89,7 @@ Partial Class Form1
         '
         Me.nikText.AutoSize = True
         Me.nikText.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.nikText.Location = New System.Drawing.Point(35, 132)
+        Me.nikText.Location = New System.Drawing.Point(35, 117)
         Me.nikText.Name = "nikText"
         Me.nikText.Size = New System.Drawing.Size(80, 13)
         Me.nikText.TabIndex = 3
@@ -94,7 +98,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(35, 181)
+        Me.Label1.Location = New System.Drawing.Point(35, 162)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(88, 13)
         Me.Label1.TabIndex = 4
@@ -104,19 +108,19 @@ Partial Class Form1
         '
         Me.nameInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.nameInput.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.nameInput.Location = New System.Drawing.Point(38, 198)
+        Me.nameInput.Location = New System.Drawing.Point(38, 180)
         Me.nameInput.Name = "nameInput"
         Me.nameInput.Size = New System.Drawing.Size(253, 22)
         Me.nameInput.TabIndex = 5
         '
         'startButton
         '
-        Me.startButton.BackColor = System.Drawing.Color.Red
-        Me.startButton.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.startButton.BackColor = System.Drawing.Color.Lime
+        Me.startButton.FlatAppearance.BorderColor = System.Drawing.Color.Lime
         Me.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.startButton.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.startButton.ForeColor = System.Drawing.Color.White
-        Me.startButton.Location = New System.Drawing.Point(38, 233)
+        Me.startButton.ForeColor = System.Drawing.Color.Black
+        Me.startButton.Location = New System.Drawing.Point(38, 252)
         Me.startButton.Name = "startButton"
         Me.startButton.Size = New System.Drawing.Size(253, 23)
         Me.startButton.TabIndex = 6
@@ -195,7 +199,7 @@ Partial Class Form1
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(339, 100)
+        Me.Label3.Location = New System.Drawing.Point(339, 92)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(96, 21)
         Me.Label3.TabIndex = 13
@@ -203,27 +207,27 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea1.AxisX.LineColor = System.Drawing.Color.White
-        ChartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.White
-        ChartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.White
-        ChartArea1.AxisX.TitleFont = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea1.AxisY.LineColor = System.Drawing.Color.White
-        ChartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.White
-        ChartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.White
-        ChartArea1.AxisY.TitleFont = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
-        Me.Chart1.Location = New System.Drawing.Point(343, 132)
+        ChartArea4.AxisX.LineColor = System.Drawing.Color.White
+        ChartArea4.AxisX.MajorGrid.LineColor = System.Drawing.Color.White
+        ChartArea4.AxisX.MajorTickMark.LineColor = System.Drawing.Color.White
+        ChartArea4.AxisX.TitleFont = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea4.AxisY.LineColor = System.Drawing.Color.White
+        ChartArea4.AxisY.MajorGrid.LineColor = System.Drawing.Color.White
+        ChartArea4.AxisY.MajorTickMark.LineColor = System.Drawing.Color.White
+        ChartArea4.AxisY.TitleFont = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        ChartArea4.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea4)
+        Legend4.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend4)
+        Me.Chart1.Location = New System.Drawing.Point(343, 124)
         Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
-        Series1.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Series1.Legend = "Legend1"
-        Series1.Name = "BPM"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(627, 303)
+        Series4.ChartArea = "ChartArea1"
+        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline
+        Series4.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Series4.Legend = "Legend1"
+        Series4.Name = "BPM"
+        Me.Chart1.Series.Add(Series4)
+        Me.Chart1.Size = New System.Drawing.Size(627, 315)
         Me.Chart1.TabIndex = 14
         Me.Chart1.Text = "Chart1"
         '
@@ -234,7 +238,7 @@ Partial Class Form1
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(35, 269)
+        Me.Label4.Location = New System.Drawing.Point(35, 278)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(118, 21)
         Me.Label4.TabIndex = 15
@@ -243,27 +247,75 @@ Partial Class Form1
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 60.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(56, 300)
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 40.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(108, 300)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(0, 106)
+        Me.Label5.Size = New System.Drawing.Size(61, 72)
         Me.Label5.TabIndex = 16
+        Me.Label5.Text = "0"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(237, 366)
+        Me.Label6.Location = New System.Drawing.Point(237, 337)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(54, 25)
         Me.Label6.TabIndex = 17
         Me.Label6.Text = "BPM"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(36, 207)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(42, 13)
+        Me.Label7.TabIndex = 18
+        Me.Label7.Text = "Alamat"
+        '
+        'addressInput
+        '
+        Me.addressInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.addressInput.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.addressInput.Location = New System.Drawing.Point(38, 223)
+        Me.addressInput.Name = "addressInput"
+        Me.addressInput.Size = New System.Drawing.Size(253, 22)
+        Me.addressInput.TabIndex = 19
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.Red
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.Red
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.White
+        Me.Button1.Location = New System.Drawing.Point(38, 375)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(253, 23)
+        Me.Button1.TabIndex = 20
+        Me.Button1.Text = "Berhenti/Simpan Data"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(38, 404)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(253, 23)
+        Me.Button2.TabIndex = 21
+        Me.Button2.Text = "Lihat Data"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1008, 470)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.addressInput)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
@@ -311,4 +363,8 @@ Partial Class Form1
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents addressInput As TextBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class

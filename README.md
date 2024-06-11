@@ -15,7 +15,7 @@ git clone https://github.com/ASNProject/HeartRateMonitoring.git
 
 ### Run Project
 - Start localhost (XAMPP) 
-- Import bpm_db (in Aplikasi V2 folder) to phpMyAdmin
+- Import bpm_db (in Aplikasi Versi 2 folder) to phpMyAdmin
 - Open ```.sln``` project with visual studio with framework 4.7.2
 - Run Project
 
